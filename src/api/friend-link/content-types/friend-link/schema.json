@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "friend_links",
+  "info": {
+    "singularName": "friend-link",
+    "pluralName": "friend-links",
+    "displayName": "friendLinks",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "linksName": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "linksUrl": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

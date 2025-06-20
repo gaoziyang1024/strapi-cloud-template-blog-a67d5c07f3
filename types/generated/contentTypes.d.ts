@@ -380,18 +380,79 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     blocks: Schema.Attribute.DynamicZone<
       ['shared.media', 'shared.quote', 'shared.rich-text', 'shared.slider']
-    >;
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiActivitiesAndServiceActivitiesAndService
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'activities_and_services';
+  info: {
+    description: '';
+    displayName: 'Activities & Services';
+    pluralName: 'activities-and-services';
+    singularName: 'activities-and-service';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    artcileId: Schema.Attribute.UID;
+    attach: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    content: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    descript: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'> &
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::activities-and-service.activities-and-service'
+    > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
+    source: Schema.Attribute.Text;
+    title: Schema.Attribute.Text;
+    type: Schema.Attribute.Enumeration<
+      [
+        'AI Infrastructure Benchmarks',
+        'International Standards',
+        'Testing & Certification',
+        'Academic Publications',
+      ]
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -502,6 +563,127 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiEventEvent extends Struct.CollectionTypeSchema {
+  collectionName: 'events';
+  info: {
+    description: '';
+    displayName: 'Events';
+    pluralName: 'events';
+    singularName: 'event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    artcileId: Schema.Attribute.UID;
+    attach: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    content: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    descript: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
+    publishedAt: Schema.Attribute.DateTime;
+    source: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    type: Schema.Attribute.Enumeration<
+      ['Summit 2024', 'Awards & Competitions', 'Past Events']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFriendLinkFriendLink extends Struct.CollectionTypeSchema {
+  collectionName: 'friend_links';
+  info: {
+    description: '';
+    displayName: 'friendLinks';
+    pluralName: 'friend-links';
+    singularName: 'friend-link';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    linksName: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    linksUrl: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::friend-link.friend-link'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -513,21 +695,316 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    defaultSeo: Schema.Attribute.Component<'shared.seo', false>;
-    favicon: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    defaultSeo: Schema.Attribute.Component<'shared.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    favicon: Schema.Attribute.Media<'images' | 'files' | 'videos'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::global.global'>;
+    publishedAt: Schema.Attribute.DateTime;
+    siteDescription: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    siteName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiJoinusJoinus extends Struct.SingleTypeSchema {
+  collectionName: 'joinuses';
+  info: {
+    description: '';
+    displayName: 'joinus';
+    pluralName: 'joinuses';
+    singularName: 'joinus';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    a: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::joinus.joinus'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNewsroomNewsroom extends Struct.CollectionTypeSchema {
+  collectionName: 'newsrooms';
+  info: {
+    description: '';
+    displayName: 'Newsroom';
+    pluralName: 'newsrooms';
+    singularName: 'newsroom';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    artcileId: Schema.Attribute.UID;
+    attach: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    content: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    descript: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::global.global'
-    > &
-      Schema.Attribute.Private;
+      'api::newsroom.newsroom'
+    >;
     publishedAt: Schema.Attribute.DateTime;
-    siteDescription: Schema.Attribute.Text & Schema.Attribute.Required;
-    siteName: Schema.Attribute.String & Schema.Attribute.Required;
+    source: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    type: Schema.Attribute.Enumeration<
+      ['Press Releases', 'Industry News', 'Newsletter']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiResourceResource extends Struct.CollectionTypeSchema {
+  collectionName: 'resources';
+  info: {
+    description: '';
+    displayName: 'Resources';
+    pluralName: 'resources';
+    singularName: 'resource';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    artcileId: Schema.Attribute.UID;
+    attach: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    content: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    descript: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::resource.resource'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    source: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    type: Schema.Attribute.Enumeration<
+      ['White Papers', 'Technical Reports', 'Case Studies']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSectorSector extends Struct.CollectionTypeSchema {
+  collectionName: 'sectors';
+  info: {
+    description: '';
+    displayName: 'Sector';
+    pluralName: 'sectors';
+    singularName: 'sector';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    artcileId: Schema.Attribute.UID;
+    attach: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    content: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    descript: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::sector.sector'>;
+    publishedAt: Schema.Attribute.DateTime;
+    source: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    type: Schema.Attribute.Enumeration<
+      ['Network', 'Datacenter', 'Data', 'Cloud', 'AI', 'Security']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1044,10 +1521,17 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
+      'api::activities-and-service.activities-and-service': ApiActivitiesAndServiceActivitiesAndService;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::event.event': ApiEventEvent;
+      'api::friend-link.friend-link': ApiFriendLinkFriendLink;
       'api::global.global': ApiGlobalGlobal;
+      'api::joinus.joinus': ApiJoinusJoinus;
+      'api::newsroom.newsroom': ApiNewsroomNewsroom;
+      'api::resource.resource': ApiResourceResource;
+      'api::sector.sector': ApiSectorSector;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

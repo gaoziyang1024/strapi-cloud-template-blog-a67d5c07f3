@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "activities_and_services",
+  "info": {
+    "singularName": "activities-and-service",
+    "pluralName": "activities-and-services",
+    "displayName": "Activities & Services",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "date": {
+      "type": "date"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "source": {
+      "type": "text"
+    },
+    "attach": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "descript": {
+      "type": "text"
+    },
+    "artcileId": {
+      "type": "uid"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "AI Infrastructure Benchmarks",
+        "International Standards",
+        "Testing & Certification",
+        "Academic Publications"
+      ]
+    }
+  }
+}

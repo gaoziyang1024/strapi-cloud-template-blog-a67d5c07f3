@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_common_footers",
+  "info": {
+    "displayName": "footer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "friend_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::friend-link.friend-link"
+    },
+    "location": {
+      "type": "text"
+    },
+    "emailContact": {
+      "type": "text"
+    },
+    "phoneContact": {
+      "type": "text"
+    },
+    "lingin": {
+      "type": "text"
+    },
+    "xlinks": {
+      "type": "string"
+    },
+    "icp": {
+      "type": "text"
+    },
+    "copyright": {
+      "type": "text"
+    }
+  }
+}

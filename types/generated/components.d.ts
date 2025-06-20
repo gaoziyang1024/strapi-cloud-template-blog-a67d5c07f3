@@ -1,5 +1,36 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CommonFooter extends Struct.ComponentSchema {
+  collectionName: 'components_common_footers';
+  info: {
+    description: '';
+    displayName: 'footer';
+  };
+  attributes: {
+    copyright: Schema.Attribute.Text;
+    emailContact: Schema.Attribute.Text;
+    friend_links: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::friend-link.friend-link'
+    >;
+    icp: Schema.Attribute.Text;
+    lingin: Schema.Attribute.Text;
+    location: Schema.Attribute.Text;
+    phoneContact: Schema.Attribute.Text;
+    xlinks: Schema.Attribute.String;
+  };
+}
+
+export interface CommonHeader extends Struct.ComponentSchema {
+  collectionName: 'components_common_headers';
+  info: {
+    displayName: 'header';
+  };
+  attributes: {
+    type: Schema.Attribute.String;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -65,6 +96,8 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'common.footer': CommonFooter;
+      'common.header': CommonHeader;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
