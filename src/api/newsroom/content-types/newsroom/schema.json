@@ -87,6 +87,13 @@
           "localized": true
         }
       }
+    },
+    "cover": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

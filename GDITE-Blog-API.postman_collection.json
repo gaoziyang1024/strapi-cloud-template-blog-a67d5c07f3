@@ -1,0 +1,470 @@
+{
+  "info": {
+    "name": "GDITE Blog API",
+    "description": "GDITE Strapi Blog API 接口集合",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{jwt_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://top.gditc.org/api"
+    },
+    {
+      "key": "jwt_token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "认证管理",
+      "item": [
+        {
+          "name": "用户登录",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const responseJson = pm.response.json();",
+                  "    pm.collectionVariables.set('jwt_token', responseJson.jwt);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identifier\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/local",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "local"]
+            }
+          }
+        },
+        {
+          "name": "用户注册",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/local/register",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "local", "register"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "文章管理",
+      "item": [
+        {
+          "name": "获取所有文章",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/articles?populate=*",
+              "host": ["{{base_url}}"],
+              "path": ["articles"],
+              "query": [{"key": "populate", "value": "*"}]
+            }
+          }
+        },
+        {
+          "name": "创建文章",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"title\": \"测试文章\",\n    \"description\": \"文章描述\",\n    \"slug\": \"test-article\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/articles",
+              "host": ["{{base_url}}"],
+              "path": ["articles"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "作者管理",
+      "item": [
+        {
+          "name": "获取所有作者",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/authors",
+              "host": ["{{base_url}}"],
+              "path": ["authors"]
+            }
+          }
+        },
+        {
+          "name": "创建作者",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"name\": \"张三\",\n    \"email\": \"zhangsan@example.com\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/authors",
+              "host": ["{{base_url}}"],
+              "path": ["authors"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "分类管理",
+      "item": [
+        {
+          "name": "获取所有分类",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/categories",
+              "host": ["{{base_url}}"],
+              "path": ["categories"]
+            }
+          }
+        },
+        {
+          "name": "创建分类",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"name\": \"技术文章\",\n    \"slug\": \"tech\",\n    \"description\": \"技术相关文章\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/categories",
+              "host": ["{{base_url}}"],
+              "path": ["categories"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "事件管理",
+      "item": [
+        {
+          "name": "获取所有事件",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/events?locale=zh",
+              "host": ["{{base_url}}"],
+              "path": ["events"],
+              "query": [{"key": "locale", "value": "zh"}]
+            }
+          }
+        },
+        {
+          "name": "创建事件",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"title\": \"GDITE Summit 2024\",\n    \"date\": \"2024-12-01\",\n    \"content\": \"峰会内容\",\n    \"type\": \"Summit 2024\",\n    \"locale\": \"zh\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/events",
+              "host": ["{{base_url}}"],
+              "path": ["events"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "新闻室管理",
+      "item": [
+        {
+          "name": "获取所有新闻",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/newsrooms?locale=zh",
+              "host": ["{{base_url}}"],
+              "path": ["newsrooms"],
+              "query": [{"key": "locale", "value": "zh"}]
+            }
+          }
+        },
+        {
+          "name": "创建新闻",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"title\": \"重要新闻\",\n    \"date\": \"2024-01-15\",\n    \"content\": \"新闻内容\",\n    \"type\": \"Press Releases\",\n    \"locale\": \"zh\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/newsrooms",
+              "host": ["{{base_url}}"],
+              "path": ["newsrooms"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "资源管理",
+      "item": [
+        {
+          "name": "获取所有资源",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/resources?locale=zh",
+              "host": ["{{base_url}}"],
+              "path": ["resources"],
+              "query": [{"key": "locale", "value": "zh"}]
+            }
+          }
+        },
+        {
+          "name": "创建资源",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"title\": \"技术白皮书\",\n    \"date\": \"2024-01-01\",\n    \"content\": \"白皮书内容\",\n    \"type\": \"White Papers\",\n    \"locale\": \"zh\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/resources",
+              "host": ["{{base_url}}"],
+              "path": ["resources"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "行业管理",
+      "item": [
+        {
+          "name": "获取所有行业",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/sectors?locale=zh",
+              "host": ["{{base_url}}"],
+              "path": ["sectors"],
+              "query": [{"key": "locale", "value": "zh"}]
+            }
+          }
+        },
+        {
+          "name": "创建行业信息",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"title\": \"AI行业分析\",\n    \"date\": \"2024-01-01\",\n    \"content\": \"行业分析内容\",\n    \"type\": \"AI\",\n    \"locale\": \"zh\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/sectors",
+              "host": ["{{base_url}}"],
+              "path": ["sectors"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "活动与服务",
+      "item": [
+        {
+          "name": "获取活动与服务",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/activities-and-services",
+              "host": ["{{base_url}}"],
+              "path": ["activities-and-services"]
+            }
+          }
+        },
+        {
+          "name": "创建活动与服务",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"title\": \"测试服务\",\n    \"date\": \"2024-01-01\",\n    \"content\": \"服务内容\",\n    \"type\": \"AI Infrastructure Benchmarks\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/activities-and-services",
+              "host": ["{{base_url}}"],
+              "path": ["activities-and-services"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "友情链接",
+      "item": [
+        {
+          "name": "获取友情链接",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/friend-links?locale=zh",
+              "host": ["{{base_url}}"],
+              "path": ["friend-links"],
+              "query": [{"key": "locale", "value": "zh"}]
+            }
+          }
+        },
+        {
+          "name": "创建友情链接",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"linksName\": \"技术伙伴\",\n    \"linksUrl\": \"https://partner.example.com\",\n    \"locale\": \"zh\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/friend-links",
+              "host": ["{{base_url}}"],
+              "path": ["friend-links"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "单例类型",
+      "item": [
+        {
+          "name": "获取关于我们",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/about?locale=zh",
+              "host": ["{{base_url}}"],
+              "path": ["about"],
+              "query": [{"key": "locale", "value": "zh"}]
+            }
+          }
+        },
+        {
+          "name": "更新关于我们",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"title\": \"关于GDITE\",\n    \"locale\": \"zh\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/about",
+              "host": ["{{base_url}}"],
+              "path": ["about"]
+            }
+          }
+        },
+        {
+          "name": "获取全局配置",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/global?locale=zh",
+              "host": ["{{base_url}}"],
+              "path": ["global"],
+              "query": [{"key": "locale", "value": "zh"}]
+            }
+          }
+        },
+        {
+          "name": "更新全局配置",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"siteName\": \"GDITE官方网站\",\n    \"siteDescription\": \"全球数字基础设施测试工程\",\n    \"locale\": \"zh\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/global",
+              "host": ["{{base_url}}"],
+              "path": ["global"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "文件上传",
+      "item": [
+        {
+          "name": "上传文件",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "files",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/upload",
+              "host": ["{{base_url}}"],
+              "path": ["upload"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+} 
