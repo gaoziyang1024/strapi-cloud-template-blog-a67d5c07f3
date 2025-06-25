@@ -72,9 +72,6 @@
         }
       }
     },
-    "artcileId": {
-      "type": "uid"
-    },
     "type": {
       "type": "enumeration",
       "enum": [
@@ -89,11 +86,12 @@
       }
     },
     "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

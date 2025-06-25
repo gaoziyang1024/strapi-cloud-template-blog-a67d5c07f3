@@ -72,9 +72,6 @@
         }
       }
     },
-    "artcileId": {
-      "type": "uid"
-    },
     "type": {
       "type": "enumeration",
       "enum": [

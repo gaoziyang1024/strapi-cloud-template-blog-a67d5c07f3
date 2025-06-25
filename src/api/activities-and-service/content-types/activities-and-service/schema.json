@@ -37,9 +37,6 @@
     "descript": {
       "type": "text"
     },
-    "artcileId": {
-      "type": "uid"
-    },
     "type": {
       "type": "enumeration",
       "enum": [
@@ -48,6 +45,14 @@
         "Testing & Certification",
         "Academic Publications"
       ]
+    },
+    "cover": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
