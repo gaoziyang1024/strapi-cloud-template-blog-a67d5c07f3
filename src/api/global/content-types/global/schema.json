@@ -58,6 +58,16 @@
           "localized": true
         }
       }
+    },
+    "cdnConfig": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.cdn-config",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }

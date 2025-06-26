@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_common_footer_settings",
+  "info": {
+    "displayName": "footerSettings",
+    "icon": "cog"
+  },
+  "options": {},
+  "attributes": {
+    "zhHans": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.footer-zh-hans"
+    },
+    "en": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.footer"
+    }
+  }
+}

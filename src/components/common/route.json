@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_common_routes",
+  "info": {
+    "displayName": "route"
+  },
+  "options": {},
+  "attributes": {
+    "nameEN": {
+      "type": "string",
+      "required": true
+    },
+    "nameZhHans": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

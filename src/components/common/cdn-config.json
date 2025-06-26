@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_common_cdn_configs",
+  "info": {
+    "displayName": "CDN配置",
+    "description": "CDN地址和相关配置选项",
+    "icon": "server"
+  },
+  "options": {},
+  "attributes": {
+    "baseUrl": {
+      "type": "string",
+      "required": true,
+      "description": "CDN基础地址，例如：https://cdn.example.com"
+    },
+    "imagePath": {
+      "type": "string",
+      "default": "/images",
+      "description": "图片路径前缀，例如：/images"
+    },
+    "isEnabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "是否启用CDN"
+    },
+    "allowedDomains": {
+      "type": "json",
+      "description": "允许的CDN域名列表"
+    },
+    "cacheSettings": {
+      "type": "json",
+      "description": "缓存设置配置"
+    }
+  }
+} 

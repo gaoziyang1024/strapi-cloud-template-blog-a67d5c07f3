@@ -1,8 +1,7 @@
 {
-  "collectionName": "components_common_footers",
+  "collectionName": "components_common_footer_zh_hans",
   "info": {
-    "displayName": "footer_en",
-    "description": ""
+    "displayName": "footer_zhHans"
   },
   "options": {},
   "attributes": {
@@ -33,13 +32,12 @@
       "type": "text"
     },
     "logo": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
       "allowedTypes": [
         "images",
         "files"
-      ]
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

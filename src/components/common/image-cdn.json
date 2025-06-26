@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_common_image_cdns",
+  "info": {
+    "displayName": "图片CDN",
+    "description": "图片CDN地址配置",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "originalUrl": {
+      "type": "string",
+      "description": "原始图片地址"
+    },
+    "cdnUrl": {
+      "type": "string",
+      "description": "CDN图片地址"
+    },
+    "thumbnailUrl": {
+      "type": "string",
+      "description": "缩略图CDN地址"
+    },
+    "altText": {
+      "type": "string",
+      "description": "图片替代文本"
+    },
+    "sizes": {
+      "type": "json",
+      "description": "不同尺寸的CDN地址配置"
+    },
+    "isOptimized": {
+      "type": "boolean",
+      "default": false,
+      "description": "是否已优化"
+    }
+  }
+} 

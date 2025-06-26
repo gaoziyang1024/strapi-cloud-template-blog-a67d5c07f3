@@ -1,12 +1,24 @@
 {
   "collectionName": "components_common_headers",
   "info": {
-    "displayName": "header"
+    "displayName": "header",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "type": {
-      "type": "string"
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "route": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.route"
     }
   }
 }

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_common_picture_components",
+  "info": {
+    "displayName": "pictureComponents",
+    "icon": "chartBubble"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "images": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "remark": {
+      "type": "text"
+    }
+  }
+}
