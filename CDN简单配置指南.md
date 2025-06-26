@@ -1,8 +1,8 @@
-# CDN简单配置指南
+# CDN标准配置指南
 
-## 🎯 简单CDN配置方法
+## 🎯 标准CDN配置方法
 
-这是使用Strapi内置功能直接替换上传文件URL的简单方法，无需复杂的自定义代码。
+这是使用Strapi标准的 `providerOptions.baseURL` 方法配置CDN，这是官方推荐的方式。
 
 ## ⚙️ 配置步骤
 
@@ -12,7 +12,7 @@
 
 ```env
 # CDN基础URL
-CDN_BASE_URL=https://top.gditc.com
+CDN_URL=https://gditc.org
 ```
 
 ### 2. 插件配置
@@ -28,15 +28,12 @@ module.exports = ({ env }) => ({
             provider: 'local',
             providerOptions: {
                 sizeLimit: 100000000, // 100MB
+                baseURL: env('CDN_URL', 'https://gditc.org') // CDN基础地址
             },
             actionOptions: {
                 upload: {},
                 uploadStream: {},
                 delete: {},
-            },
-            // CDN URL 替换配置
-            action: {
-                url: ({ env }) => env('CDN_BASE_URL', 'https://top.gditc.com'),
             },
         },
     }
@@ -54,7 +51,7 @@ https://wonderful-serenity-47deffe3a2.media.strapiapp.com/33333_e82c3195ef.jpg
 
 **配置后返回的地址**：
 ```
-https://top.gditc.com/33333_e82c3195ef.jpg
+https://gditc.org/uploads/33333_e82c3195ef.jpg
 ```
 
 ### API响应示例
@@ -67,7 +64,7 @@ https://top.gditc.com/33333_e82c3195ef.jpg
     "id": 1,
     "attributes": {
       "name": "33333_e82c3195ef.jpg",
-      "url": "https://top.gditc.com/33333_e82c3195ef.jpg",
+      "url": "https://gditc.org/uploads/33333_e82c3195ef.jpg",
       "mime": "image/jpeg",
       "size": 123456
     }
@@ -110,7 +107,7 @@ function Image({ imageData }) {
 
 ## 🔧 CDN服务器配置
 
-确保您的CDN服务器 `https://top.gditc.com` 已配置好：
+确保您的CDN服务器 `https://gditc.org` 已配置好：
 
 1. **原文件同步** - 将Strapi上传的文件同步到CDN
 2. **路径映射** - 确保文件路径与原始路径一致

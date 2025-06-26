@@ -21,15 +21,12 @@ module.exports = ({ env }) => ({
             provider: 'local',
             providerOptions: {
                 sizeLimit: 100000000, // 100MB
+                baseURL: env('CDN_URL', 'https://gditc.org') // CDN基础地址
             },
             actionOptions: {
                 upload: {},
                 uploadStream: {},
                 delete: {},
-            },
-            // CDN URL 替换配置
-            action: {
-                url: ({ env }) => env('CDN_BASE_URL', 'https://gditc.org/uploads'),
             },
         },
     }
