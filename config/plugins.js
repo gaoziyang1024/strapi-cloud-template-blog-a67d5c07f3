@@ -27,13 +27,10 @@ module.exports = ({ env }) => ({
                 uploadStream: {},
                 delete: {},
             },
-            // CDN配置
-            cdn: {
-                enabled: env.bool('CDN_ENABLED', false),
-                baseUrl: env('CDN_BASE_URL', ''),
-                imagePath: env('CDN_IMAGE_PATH', '/images'),
-                enableOptimization: env.bool('CDN_OPTIMIZATION', true),
-            }
+            // CDN URL 替换配置
+            action: {
+                url: ({ env }) => env('CDN_BASE_URL', 'https://top.gditc.org'),
+            },
         },
     }
 });
