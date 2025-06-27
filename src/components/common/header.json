@@ -17,7 +17,7 @@
     },
     "route": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "common.route"
     }
   }

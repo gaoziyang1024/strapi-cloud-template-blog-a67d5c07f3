@@ -79,7 +79,7 @@ export interface CommonHeader extends Struct.ComponentSchema {
   };
   attributes: {
     logo: Schema.Attribute.Media<'images' | 'files'>;
-    route: Schema.Attribute.Component<'common.route', false>;
+    route: Schema.Attribute.Component<'common.route', true>;
   };
 }
 
@@ -117,9 +117,11 @@ export interface CommonPictureComponents extends Struct.ComponentSchema {
 export interface CommonRoute extends Struct.ComponentSchema {
   collectionName: 'components_common_routes';
   info: {
+    description: '';
     displayName: 'route';
   };
   attributes: {
+    componentsName: Schema.Attribute.String;
     nameEN: Schema.Attribute.String & Schema.Attribute.Required;
     nameZhHans: Schema.Attribute.String & Schema.Attribute.Required;
   };

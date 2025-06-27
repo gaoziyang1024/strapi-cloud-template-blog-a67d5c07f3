@@ -21,7 +21,7 @@ module.exports = ({ env }) => ({
             provider: 'local',
             providerOptions: {
                 sizeLimit: 100000000, // 100MB
-                baseURL: env('CDN_URL', 'https://gditc.org') // CDN基础地址
+                baseURL: env('CDN_URL', 'https://gditc.org') // Cloudflare域名，可改为 https://cdn.gditc.org
             },
             actionOptions: {
                 upload: {},
