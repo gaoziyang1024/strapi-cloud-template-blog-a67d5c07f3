@@ -757,18 +757,10 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    banner: Schema.Attribute.DynamicZone<['shared.slider']>;
+    bannerSwiper: Schema.Attribute.Component<'common.picture-components', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    ExploreBySector: Schema.Attribute.DynamicZone<
-      ['common.picture-components']
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::home.home'>;
     publishedAt: Schema.Attribute.DateTime;

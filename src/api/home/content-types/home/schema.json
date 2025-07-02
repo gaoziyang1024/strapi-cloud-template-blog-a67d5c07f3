@@ -16,22 +16,10 @@
     }
   },
   "attributes": {
-    "banner": {
-      "type": "dynamiczone",
-      "components": [
-        "shared.slider"
-      ]
-    },
-    "ExploreBySector": {
-      "type": "dynamiczone",
-      "components": [
-        "common.picture-components"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+    "bannerSwiper": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.picture-components"
     }
   }
 }
