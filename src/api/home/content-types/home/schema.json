@@ -16,9 +16,6 @@
     }
   },
   "attributes": {
-    "a": {
-      "type": "string"
-    },
     "banner": {
       "type": "dynamiczone",
       "components": [

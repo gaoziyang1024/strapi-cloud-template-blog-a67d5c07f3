@@ -762,7 +762,6 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    a: Schema.Attribute.String;
     banner: Schema.Attribute.DynamicZone<['shared.slider']>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
