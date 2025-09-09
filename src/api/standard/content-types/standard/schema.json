@@ -1,10 +1,11 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "standards",
   "info": {
     "singularName": "standard",
     "pluralName": "standards",
-    "displayName": "Standards"
+    "displayName": "Standards",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
