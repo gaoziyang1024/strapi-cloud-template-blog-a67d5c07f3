@@ -4,8 +4,7 @@
   "info": {
     "singularName": "standard",
     "pluralName": "standards",
-    "displayName": "Standards",
-    "description": ""
+    "displayName": "Standards"
   },
   "options": {
     "draftAndPublish": true

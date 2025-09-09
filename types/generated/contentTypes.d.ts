@@ -726,7 +726,6 @@ export interface ApiJoinusJoinus extends Struct.SingleTypeSchema {
 export interface ApiStandardStandard extends Struct.CollectionTypeSchema {
   collectionName: 'standards';
   info: {
-    description: '';
     displayName: 'Standards';
     pluralName: 'standards';
     singularName: 'standard';
