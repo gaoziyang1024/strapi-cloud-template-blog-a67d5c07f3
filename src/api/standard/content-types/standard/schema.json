@@ -1,19 +1,13 @@
 {
-  "kind": "collectionType",
-  "collectionName": "newsrooms",
+  "kind": "singleType",
+  "collectionName": "standards",
   "info": {
-    "singularName": "newsroom",
-    "pluralName": "newsrooms",
-    "displayName": "newsroom",
-    "description": ""
+    "singularName": "standard",
+    "pluralName": "standards",
+    "displayName": "Standards"
   },
   "options": {
     "draftAndPublish": true
-  },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
   },
   "attributes": {
     "title": {

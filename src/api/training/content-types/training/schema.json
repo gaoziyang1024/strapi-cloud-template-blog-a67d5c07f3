@@ -1,19 +1,13 @@
 {
   "kind": "collectionType",
-  "collectionName": "newsrooms",
+  "collectionName": "trainings",
   "info": {
-    "singularName": "newsroom",
-    "pluralName": "newsrooms",
-    "displayName": "newsroom",
-    "description": ""
+    "singularName": "training",
+    "pluralName": "trainings",
+    "displayName": "Training"
   },
   "options": {
     "draftAndPublish": true
-  },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
   },
   "attributes": {
     "title": {

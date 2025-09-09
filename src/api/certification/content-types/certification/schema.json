@@ -1,19 +1,13 @@
 {
   "kind": "collectionType",
-  "collectionName": "newsrooms",
+  "collectionName": "certifications",
   "info": {
-    "singularName": "newsroom",
-    "pluralName": "newsrooms",
-    "displayName": "newsroom",
-    "description": ""
+    "singularName": "certification",
+    "pluralName": "certifications",
+    "displayName": "Certifications"
   },
   "options": {
     "draftAndPublish": true
-  },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
   },
   "attributes": {
     "title": {
