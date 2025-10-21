@@ -429,12 +429,7 @@ export interface ApiCertificationCertification
           localized: true;
         };
       }>;
-    content: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    content: Schema.Attribute.Blocks;
     cover: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -510,12 +505,7 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    content: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    content: Schema.Attribute.Blocks;
     cover: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -743,12 +733,7 @@ export interface ApiStandardStandard extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    content: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    content: Schema.Attribute.Blocks;
     cover: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -818,12 +803,7 @@ export interface ApiTrainingTraining extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    content: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    content: Schema.Attribute.Blocks;
     cover: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
