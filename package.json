@@ -9,7 +9,10 @@
     "develop": "strapi develop",
     "seed:example": "node ./scripts/seed.js",
     "start": "strapi start",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "fix-json": "node fix-json-data.js",
+    "pre-deploy-check": "node pre-deploy-check.js",
+    "deploy-safe": "npm run pre-deploy-check && npm run fix-json && strapi deploy"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.11.0",
