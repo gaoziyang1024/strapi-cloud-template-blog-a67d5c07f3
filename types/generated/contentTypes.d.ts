@@ -505,7 +505,7 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    content: Schema.Attribute.Blocks;
+    contents: Schema.Attribute.Blocks;
     cover: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -707,6 +707,7 @@ export interface ApiJoinusJoinus extends Struct.SingleTypeSchema {
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::joinus.joinus'>;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.Component<'common.files', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -733,7 +734,7 @@ export interface ApiStandardStandard extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    content: Schema.Attribute.Blocks;
+    contents: Schema.Attribute.Blocks;
     cover: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -803,7 +804,7 @@ export interface ApiTrainingTraining extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    content: Schema.Attribute.Blocks;
+    contents: Schema.Attribute.Blocks;
     cover: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

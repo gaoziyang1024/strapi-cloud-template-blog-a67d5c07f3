@@ -16,6 +16,17 @@ export interface CommonCdnConfig extends Struct.ComponentSchema {
   };
 }
 
+export interface CommonFiles extends Struct.ComponentSchema {
+  collectionName: 'components_common_files';
+  info: {
+    displayName: 'files';
+  };
+  attributes: {
+    file: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface CommonFooter extends Struct.ComponentSchema {
   collectionName: 'components_common_footers';
   info: {
@@ -193,6 +204,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'common.cdn-config': CommonCdnConfig;
+      'common.files': CommonFiles;
       'common.footer': CommonFooter;
       'common.footer-settings': CommonFooterSettings;
       'common.footer-zh-hans': CommonFooterZhHans;

@@ -26,6 +26,12 @@
         "videos",
         "audios"
       ]
+    },
+    "title": {
+      "displayName": "files",
+      "type": "component",
+      "repeatable": true,
+      "component": "common.files"
     }
   }
 }
