@@ -27,7 +27,7 @@
         "audios"
       ]
     },
-    "title": {
+    "fileslist": {
       "displayName": "files",
       "type": "component",
       "repeatable": true,
