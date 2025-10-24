@@ -412,6 +412,7 @@ export interface ApiCertificationCertification
   extends Struct.CollectionTypeSchema {
   collectionName: 'certifications';
   info: {
+    description: '';
     displayName: 'Certifications';
     pluralName: 'certifications';
     singularName: 'certification';
@@ -429,7 +430,7 @@ export interface ApiCertificationCertification
           localized: true;
         };
       }>;
-    content: Schema.Attribute.Blocks;
+    contents: Schema.Attribute.Blocks;
     cover: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -704,10 +705,10 @@ export interface ApiJoinusJoinus extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     download: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    fileslist: Schema.Attribute.Component<'common.files', true>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::joinus.joinus'>;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.Component<'common.files', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
